@@ -15,9 +15,9 @@ void start(){
   std::vector<int> files;
   std::vector<std::string> folders;
   std::string path;
-  std::cin>>path;
-  const std::string target_path( path );
-  const boost::regex my_filter( "balance_(\\d{8})_(\\d{8}).txt" );
+  std::cin >> path;
+  const std::string target_path(path);
+  const boost::regex my_filter("balance_(\\d{8})_(\\d{8}).txt");
 
   boost::filesystem::directory_iterator end_itr_dir;
   for (boost::filesystem::directory_iterator j( target_path );
@@ -38,16 +38,16 @@ void start(){
           std::string line;
           getline(fileHandler, line);
           std::string id = line.substr(2, 8);
-          int date =std::stoi(line.substr(11, 8));
+          int date = std::stoi(line.substr(11, 8));
           bool flag = true;
           int count = 0;
-          for(auto l = ids.begin(); l != ids.end(); l++) {
+          for (auto l = ids.begin(); l != ids.end(); l++) {
             if (*l == id) {
               flag = false;
               if (date > dates[count]) dates[count] = date;
-              files[count] ++;
+              files[count]++;
             }
-            count ++;
+            count++;
           }
           if (flag)
           {
@@ -63,7 +63,7 @@ void start(){
       }
     }
   }
-  for(size_t i = 0; i < ids.size(); i++){
+  for (size_t i = 0; i < ids.size(); i++){
     std::cout << "-> broker: " << folders[i] << " account: " << ids[i] <<
         " last update: " << dates[i] << " files: " << files[i] << std::endl;
   }
