@@ -7,7 +7,6 @@
 #include <stdexcept>
 #include <string>
 #include <utils.hpp>
-using boost::filesystem;
 
 void start(){
   std::vector<std::string> ids;
