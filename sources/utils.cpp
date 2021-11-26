@@ -20,15 +20,18 @@ void start(){
   const boost::regex my_filter( "balance_(\\d{8})_(\\d{8}).txt" );
 
   boost::filesystem::directory_iterator end_itr_dir;
-  for (boost::filesystem::directory_iterator j( target_path ); j != end_itr_dir; ++j)
+  for (boost::filesystem::directory_iterator j( target_path );
+       j != end_itr_dir; ++j)
   {
     boost::filesystem::directory_iterator end_itr;
     if (!boost::filesystem::is_regular_file(j->status()))
     {
-      for (boost::filesystem::directory_iterator i(j->path()); i != end_itr; ++i)
+      for (boost::filesystem::directory_iterator i(j->path());
+           i != end_itr; ++i)
       {
         boost::smatch what;
-        if (boost::regex_match(i->path().filename().string(), what, my_filter)){
+        if (boost::regex_match(
+                i->path().filename().string(), what, my_filter)){
           std::cout << j->path().filename().string() << " " <<
               i->path().filename().string() << std::endl;
           boost::filesystem::ifstream fileHandler(i->path().string());
@@ -53,9 +56,9 @@ void start(){
             files.push_back(1);
             folders.push_back(j->path().filename().string());
           }
-          std::cout<<id<<std::endl;
-          std::cout<<date<<std::endl;
-          std::cout<<line<<std::endl;
+          std::cout << id << std::endl;
+          std::cout << date << std::endl;
+          std::cout << line << std::endl;
         }
       }
     }
