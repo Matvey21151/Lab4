@@ -7,7 +7,7 @@
 #include <stdexcept>
 #include <string>
 #include <utils.hpp>
-using namespace boost::filesystem;
+using boost::filesystem;
 
 void start(){
   std::vector<std::string> ids;
