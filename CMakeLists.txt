@@ -28,12 +28,13 @@ string(APPEND CMAKE_CXX_FLAGS " -Wshadow -Wnon-virtual-dtor")
 
 # new versions of cmake contain gtest search files
 # commented out to increase the build speed.
-# hunter_add_package(GTest)
+hunter_add_package(GTest)
 find_package(GTest CONFIG REQUIRED)
-
+hunter_add_package(Boost COMPONENTS system filesystem regex)
+find_package(Boost CONFIG REQUIRED system filesystem regex)
 add_library(${PROJECT_NAME} STATIC
   # enum your files and delete this comment
-  ${CMAKE_CURRENT_SOURCE_DIR}/sources/example.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/sources/utils.cpp
 )
 
 add_executable(demo
@@ -44,6 +45,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
   "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
   "$<INSTALL_INTERFACE:include>"
 )
+target_link_libraries(${PROJECT_NAME} Boost::system Boost::filesystem Boost::regex)
 
 target_link_libraries(demo ${PROJECT_NAME})
 
