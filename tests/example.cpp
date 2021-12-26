@@ -4,7 +4,6 @@
 #include <stdexcept>
 #include <utils.hpp>
 
-
 TEST(Example, EmptyTest) {
     EXPECT_TRUE(true);
 }
