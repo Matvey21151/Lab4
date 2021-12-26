@@ -1,4 +1,4 @@
-// Copyright 2021 Your Name <your_email>
+// Copyright 2021 Matvey21151
 #include <boost/filesystem.hpp>
 #include <boost/regex.hpp>
 #include <iostream>
