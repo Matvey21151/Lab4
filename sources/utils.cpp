@@ -7,7 +7,6 @@
 #include <string>
 #include <utils.hpp>
 
-
 void start(){
   std::vector<std::string> ids;
   std::vector<int> dates;
